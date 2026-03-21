@@ -1,3 +1,23 @@
+server:
+  port: 8888
+
 spring:
   application:
     name: config-server
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/products-platform/config-repo
+          default-label: main
+          clone-on-start: true
+          search-paths: "*"
+  main:
+    banner-mode: off
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
